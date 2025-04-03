@@ -8,8 +8,8 @@ import Errors, { HttpCode, Message } from "../libs/Error";
 
 const memberService = new MemberService();
 
-const restaurantController : T = {}
-    restaurantController.goHome = (req: Request, res: Response) => {
+const furnixarController : T = {}
+    furnixarController.goHome = (req: Request, res: Response) => {
         try{
             console.log("Home Page")
             res.render("home");
@@ -20,7 +20,7 @@ const restaurantController : T = {}
         }
     };
 
-    restaurantController.getSignup = (req: Request, res: Response) => {
+    furnixarController.getSignup = (req: Request, res: Response) => {
         try{
             console.log("Signup Page")
             res.render("signup");
@@ -31,7 +31,7 @@ const restaurantController : T = {}
         }
     };
 
-    restaurantController.getLogin = (req: Request, res: Response) => {
+    furnixarController.getLogin = (req: Request, res: Response) => {
         try{
             console.log("login page")
             res.render("login");
@@ -44,14 +44,14 @@ const restaurantController : T = {}
     };
 
 
-    restaurantController.processSignup = async (req: AdminRequest, res: Response) => {
+    furnixarController.processSignup = async (req: AdminRequest, res: Response) => {
         try{
             console.log("processSignup Page")
             const file  = req.file;
             if (!file) throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
             const newMember : MemberInput  = req.body;
             newMember.memberImage = file.path;
-            newMember.memberType = MemberType.RESTAURANT;
+            newMember.memberType = MemberType.FURNIXAR;
             const result = await memberService.processSignup(newMember);
             //TODO: SESSION AUTHENTICATION
 
@@ -66,7 +66,7 @@ const restaurantController : T = {}
         }
     };
 
-    restaurantController.processLogin = async (req: AdminRequest, res: Response) => {
+    furnixarController.processLogin = async (req: AdminRequest, res: Response) => {
         try{
             console.log("body:", req.body)
             const input :LoginInput = req.body;
@@ -86,7 +86,7 @@ const restaurantController : T = {}
         }
     };
 
-    restaurantController.logout = async (req: AdminRequest, res: Response) => {
+    furnixarController.logout = async (req: AdminRequest, res: Response) => {
         try{
             console.log("Logout page")
             req.session.destroy(function () {
@@ -99,7 +99,7 @@ const restaurantController : T = {}
         }
     };
 
-    restaurantController.getUsers = async (req: Request, res: Response) => {
+    furnixarController.getUsers = async (req: Request, res: Response) => {
         try{
             console.log("getUsers")
             const result = await memberService.getUsers();
@@ -111,7 +111,7 @@ const restaurantController : T = {}
         }
     };
 
-    restaurantController.updateChosenUser = async (req: Request, res: Response) => {
+    furnixarController.updateChosenUser = async (req: Request, res: Response) => {
         try{
             console.log("updateChosenUser")
             const result = await memberService.updateChosenUser(req.body);
@@ -125,7 +125,7 @@ const restaurantController : T = {}
     };
 
 
-    restaurantController.checkAuthSession = async (req: AdminRequest, res: Response) => {
+    furnixarController.checkAuthSession = async (req: AdminRequest, res: Response) => {
         try{
             console.log("checkAuthSession")
             if(req.session?.member) res.send(`<script>alert("${req.session.member.memberNick}")</script>`);
@@ -137,8 +137,8 @@ const restaurantController : T = {}
         }
     };
 
-    restaurantController.verifyRestaurant = (req: AdminRequest, res: Response, next: NextFunction) => {
-            if(req.session?.member?.memberType === MemberType.RESTAURANT){
+    furnixarController.verifyRestaurant = (req: AdminRequest, res: Response, next: NextFunction) => {
+            if(req.session?.member?.memberType === MemberType.FURNIXAR){
                 req.member = req.session.member;
                 next();
             } else {
@@ -149,4 +149,4 @@ const restaurantController : T = {}
 
 
 
-    export default restaurantController;
+    export default furnixarController;

@@ -16,7 +16,7 @@ class MemberService {
 
 
     public async getRestaurant(): Promise<Member> {
-      const result = await this.memberModel.findOne({memberType: MemberType.RESTAURANT}).lean().exec();
+      const result = await this.memberModel.findOne({memberType: MemberType.FURNIXAR}).lean().exec();
       if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
       return result;
     }
@@ -101,7 +101,7 @@ class MemberService {
      /*   SignUP method */
 
     public async processSignup(input : MemberInput): Promise<Member>{
-      const exist =await this.memberModel.findOne({memberType: MemberType.RESTAURANT}).exec()
+      const exist =await this.memberModel.findOne({memberType: MemberType.FURNIXAR}).exec()
       if(exist) throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
 
       const salt = await bcrypt.genSalt();
