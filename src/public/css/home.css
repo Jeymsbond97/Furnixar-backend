@@ -1,0 +1,65 @@
+.home-container {
+  position: relative;
+  width: auto;
+  height: auto;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(-45deg, #110303f0, #dd6d04, #011c1afc, #7a6868);
+}
+
+.home-container a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.home-container .nav-item a {
+  color: hsl(0, 0%, 70%);
+}
+
+.home-container .nav-item a.disabled {
+  color: hsl(0, 0%, 70%);
+}
+
+.home-container .navigation-menu {
+  position: relative;
+  z-index: 10000;
+  color: #efefee;
+  font-size: 40px;
+  font-family: "Cabin", sans-serif;
+}
+
+
+/* Furnixar design css  */
+
+@import url("https://fonts.googleapis.com/css2?family=Cabin:wght@500&display=swap");
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+/* body {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: hsl(0, 0%, 100%);
+	background: hsl(0, 0%, 0%);
+} */
+
+svg {
+	display: block;
+	width: 100vw;
+	max-width: 75rem;
+	height: auto;
+  justify-content: center;
+	align-items: center;
+	color: hsl(0, 0%, 70%);
+  margin-top: 130px;
+}
+svg text {
+	font-family: "Cabin", sans-serif;
+	font-weight: 500;
+}
