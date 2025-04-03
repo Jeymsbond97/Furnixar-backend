@@ -40,7 +40,7 @@ const store = new MongoDBStore({
 app.use(session({
     secret: String(process.env.SESSION_SECRET),
     cookie: {
-        maxAge: 1000 * 3600 * 3, // 3 hours aveable
+        maxAge: 1000 * 3600 * 5, // 5 hours aveable
     },
     store: store,
     resave: true,

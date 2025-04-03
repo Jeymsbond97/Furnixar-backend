@@ -1,5 +1,5 @@
 import mongoose, {Schema} from "mongoose";
-import { ProductCollection, ProductSize, ProductStatus, ProductVolume } from "../libs/enums/product.enum";
+import { ProductCollection, ProductStatus, } from "../libs/enums/product.enum";
 
 // Scheme first & Code first;
 
@@ -32,16 +32,8 @@ const productSchema = new  Schema(
         required: true,
       },
 
-      productSize :{
-        type:  String,
-        enum : ProductSize,
-        default: ProductSize.NORMAL,
-      },
-
-      productVolume :{
+      productDiscount :{
         type:  Number,
-        enum : ProductVolume,
-        default: ProductVolume.ONE,
       },
 
       productDesc: {
@@ -60,5 +52,5 @@ const productSchema = new  Schema(
 
     }, {timestamps: true}
 )    // timestamp -> vazifasi qachon createAt, qachon updateAt bo'lganini ko'rsatib beradi.
-productSchema.index({productName: 1, ProductSize: 1, ProductVolume: 1}, {unique: true})
+productSchema.index({productName: 1,}, {unique: true})
 export default mongoose.model("Product", productSchema);
