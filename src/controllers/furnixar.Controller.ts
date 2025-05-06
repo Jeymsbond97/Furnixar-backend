@@ -68,7 +68,7 @@ const furnixarController : T = {}
 
     furnixarController.processLogin = async (req: AdminRequest, res: Response) => {
         try{
-            console.log("body:", req.body)
+            console.log("processLogin Page")
             const input :LoginInput = req.body;
             const result  = await memberService.processLogin(input);
 
@@ -103,6 +103,7 @@ const furnixarController : T = {}
         try{
             console.log("getUsers")
             const result = await memberService.getUsers();
+            console.log("users => :", result)
             res.render('users', {users: result});
         }
         catch(err){

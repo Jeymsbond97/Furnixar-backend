@@ -14,15 +14,15 @@ const authService = new AuthService()
 const memberController : T = {};
 
 
-memberController.getRestaurant = async (req: Request, res: Response) => {
+memberController.getFurnixar = async (req: Request, res: Response) => {
     try{
-        console.log("getRestaurant Page")
-        const result = await memberService.getRestaurant();
+        console.log("getFurnixar Page")
+        const result = await memberService.getFurnixar();
 
         res.status(HttpCode.OK).json(result);
     }
     catch(err){
-        console.log("Error, getRestaurant:", err);
+        console.log("Error, getFurnixar:", err);
         if(err instanceof Errors) res.status(err.code).json(err);
         else res.status(Errors.standard.code).json(Errors.standard);
     }
