@@ -69,7 +69,11 @@ class MemberService {
 
     public async getTopUsers(): Promise<Member[]>{
 
-      const result = await this.memberModel.find({memberStatus: MemberStatus.ACTIVE, memberPoints: {$gte: 1}, }).sort({memberPoints: -1}).limit(5).exec();
+      const result = await this.memberModel.find({
+        memberStatus: MemberStatus.ACTIVE,
+        memberType: MemberType.USER,
+        memberPoints: { $gte: 1 },
+      }).sort({ memberPoints: -1 }).limit(5).exec();
       if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
       return result;
