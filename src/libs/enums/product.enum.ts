@@ -5,7 +5,7 @@ export enum ProductStatus {
     DELETE = 'DELETE',
 }
 
-export enum  ProductCollection {
+export enum ProductCollection {
     SOFA = 'SOFA',
     LAMP = 'LAMP',
     TABLE = 'TABLE',

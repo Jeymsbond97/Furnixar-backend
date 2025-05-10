@@ -31,6 +31,7 @@ memberController.getFurnixar = async (req: Request, res: Response) => {
 memberController.signup = async (req: Request, res: Response) => {
     try{
         console.log("signup Page")
+        console.log("req:", req)
         const input : MemberInput  = req.body,
         result : Member = await memberService.signup(input);
         const token = await authService.createToken(result)

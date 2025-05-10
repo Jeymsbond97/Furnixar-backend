@@ -32,7 +32,7 @@ class OrderService {
                 orderTotal: amount + delivery,
                 orderDelivery: delivery,
                 memberId: memberId,
-                orderStatus: OrderStatus.PROCESS,
+                orderStatus: OrderStatus.PAUSE,
             });
             const orderId = newOrder._id;
             await this.recordOrderItem(orderId, input);
