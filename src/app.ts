@@ -7,7 +7,8 @@ import morgan from "morgan"
 import { MORGAN_FORMAT } from "./libs/conflig";
 import cookieParser from "cookie-parser"
 import { T } from "./libs/types/common";
-
+import { Server as SocketIOServer } from "socket.io";
+import http from "http";
 
 
 /*  1 - ENTRANCE */
@@ -67,8 +68,26 @@ app.use('/', router);              // SPA: REACT
 app.use('/admin', routerAdmin);   //BSSR: EJS
 
 
+const server = http.createServer(app);
+const io = new SocketIOServer(server, {
+    cors: {
+        origin: true,
+        credentials: true
+    }
+});
+
+let summaryClient = 0;
+io.on('connection', (socket) => {
+    summaryClient++;
+    console.log(`Connection & total [${summaryClient}]`);
+
+    socket.on("Disconnect", () => {
+        summaryClient--;
+        console.log(`Disconnection & total [${summaryClient}]`);
+    })
+});
 
 
 
 
-export default app;
+export default server;
