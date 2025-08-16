@@ -1,6 +1,25 @@
 console.log("Siz Train.ts Sahifasidasiz");
 
 
+/*    PM2 COMMANDS
+
+pm2 start dist/server.js --name=FUNRNIXAR
+pm2 start "npm run start:prod" --name=FURNIXAR
+pm2 ls
+pm2 logs "port id"
+pm2 stop ID
+pm2 delete ID
+pm2 start ID
+pm2 restart ID (Loyihani qayta ishga tushurish stop qilmasdan)
+pm2 monit (Loyiha monitoring qilish)
+pm2 kill ( Hamma serverlarni uzadi)
+
+ */
+
+
+
+
+
 /*
     TASK-ZH:
 
