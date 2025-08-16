@@ -2,9 +2,9 @@
 
 # PRODUCTION
 
-# git reset --hard
-# git chekout master
-# git pull origin master
+git reset --hard
+git chekout master
+git pull origin master
 
 npm i
 npm run build
