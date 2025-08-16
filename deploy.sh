@@ -3,7 +3,7 @@
 # PRODUCTION
 
 git reset --hard
-git chekout master
+git checkout master
 git pull origin master
 
 npm i
